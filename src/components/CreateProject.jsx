@@ -20,13 +20,13 @@ const CreateProject = ({ onSave, onCancel }) => {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition"
+          className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
         >
           Save
         </button>
@@ -34,35 +34,31 @@ const CreateProject = ({ onSave, onCancel }) => {
 
       {/* Title */}
       <div>
-        <p className="text-sm font-semibold text-gray-700 mb-1">Title</p>
+        <p className="text-lg font-semibold text-gray-800 mb-1 uppercase tracking-wide">Title</p>
         <input
           type="text"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-600 bg-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
       {/* Description */}
       <div>
-        <p className="text-sm font-semibold text-gray-700 mb-1">Description</p>
+        <p className="text-lg font-semibold text-gray-800 mb-1 uppercase tracking-wide">Description</p>
         <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></textarea>
+          className="w-full border border-gray-600 bg-gray-300 text-gray-800 rounded px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+        </textarea>
       </div>
 
       {/* Due Date */}
       <div>
-        <p className="text-sm font-semibold text-gray-700 mb-1">Due Date</p>
+        <p className="text-lg font-semibold text-gray-800 mb-1 uppercase tracking-wide">Due Date</p>
         <input
           type="date"
-          required
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-600 bg-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
     </form>

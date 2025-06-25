@@ -1,9 +1,9 @@
 const SideBar = ({ onStartCreate, children }) => {
   return (
-    <div className="w-64 bg-gray-800 text-white p-4 space-y-4">
+    <div className="w-64 bg-gradient-to-tr from-gray-700 to-gray-900 text-white p-6 space-y-4 shadow-xl">
       <button
         onClick={onStartCreate}
-        className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition"
+        className="w-full bg-gradient-to-tr from-blue-500 to-blue-700 py-2 rounded-full text-white font-semibold hover:from-blue-600 hover:to-blue-800 transition duration-300"
       >
         + Add Project
       </button>
