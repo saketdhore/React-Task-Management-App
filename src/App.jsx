@@ -4,7 +4,7 @@ import EmptyProject from "./components/EmptyProject";
 import ProjectTab from "./components/ProjectTab";
 import DisplayProject from "./components/DisplayProject";
 import { defaultSavedProject } from "./savedProject";
-import SideBar from "./SideBar";
+import SideBar from "./components/SideBar";
 import { useEffect } from "react";
 
 function App() {
