@@ -3,17 +3,22 @@ import CreateProject from "./components/CreateProject";
 import EmptyProject from "./components/EmptyProject";
 import ProjectTab from "./components/ProjectTab";
 import DisplayProject from "./components/DisplayProject";
-import { savedProject } from "./savedProject";
+import { defaultSavedProject } from "./savedProject";
 import SideBar from "./SideBar";
+import { useEffect } from "react";
 
 function App() {
-  const [projects, setProjects] = useState(savedProject);
+  const getInitialProjects = () => {
+    const stored = localStorage.getItem("projects");
+    return stored ? JSON.parse(stored) : defaultSavedProject;
+  };
+  const [projects, setProjects] = useState(getInitialProjects);
   const [isCreating, setIsCreating] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(null); // now starts with no tab selected
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleIsCreate = () => {
     setIsCreating(true);
-    setSelectedIndex(null); // hide selected tab
+    setSelectedIndex(null);
   };
 
   const handleCancel = () => {
@@ -30,7 +35,6 @@ function App() {
 
     setProjects((prev) => [...prev, newProject]);
     setIsCreating(false);
-    savedProject = [...savedProject, newProject];
   };
 
   const handleSelectTab = (index) => {
@@ -44,12 +48,17 @@ function App() {
   }
 
   const handleUpdateTasks = (index, newTaskList) => {
-  setProjects((prev) => {
-    const updated = [...prev];
-    updated[index] = { ...updated[index], tasks: newTaskList };
-    return updated;
-  });
-};
+    setProjects((prev) => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], tasks: newTaskList };
+      return updated;
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects]);
+
 
 
 
@@ -65,12 +74,11 @@ function App() {
           />
         ))}
       </SideBar>
-
       <div className="flex-1 p-6 bg-gray-500 overflow-auto">
         {isCreating ? (
           <CreateProject onSave={handleCreateProject} onCancel={handleCancel} />
         ) : selectedIndex !== null && projects[selectedIndex] ? (
-          <DisplayProject {...projects[selectedIndex]} onDelete={() => handleDelete(selectedIndex)} onUpdateTasks={(newTasks) => handleUpdateTasks(selectedIndex, newTasks)}/>
+          <DisplayProject {...projects[selectedIndex]} onDelete={() => handleDelete(selectedIndex)} onUpdateTasks={(newTasks) => handleUpdateTasks(selectedIndex, newTasks)} />
         ) : (
           <EmptyProject onStartCreate={handleIsCreate} />
         )}

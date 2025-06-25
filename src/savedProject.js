@@ -1,1 +1,1 @@
-export const savedProject = [];
+export const defaultSavedProject = [];
