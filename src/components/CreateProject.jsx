@@ -48,6 +48,8 @@ const CreateProject = ({ onSave, onCancel }) => {
       <div>
         <p className="text-lg font-semibold text-gray-800 mb-1 uppercase tracking-wide">Description</p>
         <textarea
+          value={description}
+          onChange ={(e)=>setDescription(e.target.value)}
           className="w-full border border-gray-600 bg-gray-300 text-gray-800 rounded px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
         </textarea>
@@ -58,6 +60,8 @@ const CreateProject = ({ onSave, onCancel }) => {
         <p className="text-lg font-semibold text-gray-800 mb-1 uppercase tracking-wide">Due Date</p>
         <input
           type="date"
+          value={dueDate}
+          onChange={(e)=>setDueDate(e.target.value)}
           className="w-full border border-gray-600 bg-gray-300 text-gray-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>

@@ -29,7 +29,7 @@ function App() {
     const newProject = {
       title,
       description,
-      dueDate: new Date(dueDate).toDateString(),
+      dueDate: new Date(dueDate).toLocaleDateString('en-US'),
       tasks
     };
 
